@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    id("kotlin-kapt")
 }
 
 android {
@@ -56,4 +57,12 @@ dependencies {
     androidTestImplementation(libs.androidx.compose.ui.test.junit4)
     debugImplementation(libs.androidx.compose.ui.tooling)
     debugImplementation(libs.androidx.compose.ui.test.manifest)
+
+    //Room components
+    implementation ("androidx.room:room-ktx:2.8.0")
+    kapt ("androidx.room:room-compiler:2.8.0")
+
+    // Lifecycle components
+    implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.9.3")
+    implementation ("androidx.lifecycle:lifecycle-livedata-ktx:2.9.3")
 }
