@@ -1,6 +1,5 @@
 package com.android.notes_app_roomdb.RoomDB
 
-import android.provider.ContactsContract
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Delete
@@ -12,14 +11,15 @@ import androidx.room.Update
 @Dao
 interface NotesDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun insert(note: ContactsContract.CommonDataKinds.Note)
+    suspend fun insert(note: NoteBDstruct)
 
     @Delete
-    suspend fun delete(note: ContactsContract.CommonDataKinds.Note)
+    suspend fun delete(note: NoteBDstruct)
 
+    //notesTable - name of the entity
     @Query("Select * from notesTable order by id ASC")
-    fun getAllNotes(): LiveData<List<ContactsContract.CommonDataKinds.Note>>
+    fun getAllNotes(): LiveData<List<NoteBDstruct>>
 
     @Update
-    suspend fun update(note: ContactsContract.CommonDataKinds.Note)
+    suspend fun update(note: NoteBDstruct)
 }
